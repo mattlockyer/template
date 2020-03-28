@@ -1,18 +1,18 @@
 <script>
-	const name = 'world'
+    import { isMenuOpen, toggleMenu } from './../stores/app.js'
+	export let name = 'Header'
+	export let icon = 'fa-bars'
 </script>
 
 <header>
-    <i class="fas fa-bars"></i>
-	<h1>Header</h1>
+    <i class="fas {icon}" on:click={toggleMenu}></i>
+	<h1>{name}</h1>
 </header>
 
 <style lang="scss">
 	header {
-		position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
+		@include fixed;
+        width: 100%;
         height: 64px;
         background: white;
         border-bottom: 1px solid #eee;
@@ -20,13 +20,7 @@
         align-items: center;
         align-content: space-between;
         i {
-            color: black;
-            flex: 0 0 64px;
-            width: 64px;
-            height: 64px;
-            line-height: 64px;
-            text-align: center;
-            margin: auto;
+            @include font-button;
         }
         h1 {
             margin: 0;

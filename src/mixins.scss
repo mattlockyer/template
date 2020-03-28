@@ -1,0 +1,16 @@
+
+@mixin fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+@mixin font-button {
+    color: black;
+    flex: 0 0 64px;
+    width: 64px;
+    height: 64px;
+    line-height: 64px;
+    text-align: center;
+    margin: auto;
+}
