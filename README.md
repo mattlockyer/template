@@ -6,6 +6,14 @@ This svelte template uses scss files and preprocessor imports.
 
 As such every .svelte file using the `lang="scss"` property must be only 1 directory deep from the `/src` root.
 
+## Installation
+
+`npm i`
+
+`npm start`
+
+Occasionally you may notice your port has changed from the default `5000`. Use `killall node` and then `npm start` again.
+
 # svelte app
 
 This is a project template for [Svelte](https://svelte.dev) apps. It lives at https://github.com/sveltejs/template.
