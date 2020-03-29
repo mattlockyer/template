@@ -1,5 +1,6 @@
 <script>
     import { isMenuOpen, toggleMenu } from './../stores/app.js';
+	import { link } from 'svelte-spa-router'
 	import Header from './../components/Header.svelte'
     
 	let open
@@ -10,8 +11,8 @@
     <div></div>
     <menu>
         <Header name="Menu" icon="fa-times" />
-        <h1>Hello</h1>
-        <p>Testing</p>
+        <a href="/" on:click={toggleMenu} use:link>Home</a> 
+		<a href="/link" on:click={toggleMenu} use:link>Link</a> 
     </menu>
 </div>
 
@@ -30,16 +31,24 @@
         transition: 0.32s ease-out;
         @include fixed;
         margin: 0;
-        padding: $margin;
-        padding-top: 80px;
+        padding: 0;
+        padding-top: 64px;
         transform: translateX(-100vw);
         width: 60vw;
         height: 100vh;
         background: white;
-        border-right: 1px solid #eee;
+        border-right: 1px solid $light;
         i {
             @include font-button;
             @include fixed;
+        }
+        a {
+            padding: $margin;
+            border-bottom: 1px solid $light;
+            display: block;
+            &:hover {
+                background: $light;
+            }
         }
     }
 }
