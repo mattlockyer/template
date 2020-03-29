@@ -4,12 +4,11 @@ import commonjs from '@rollup/plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 import preprocess from 'svelte-preprocess';
-import del from 'rollup-plugin-delete'
 
 const production = !process.env.ROLLUP_WATCH;
 
 export default {
-	input: 'src/index.js',
+	input: 'src/main.js',
 	
 	// output: {
 	// 	sourcemap: true,
@@ -22,7 +21,7 @@ export default {
 		name: 'app',
 		format: 'esm',
 		sourcemap: true,
-		dir: 'public/build',
+		dir: 'public',
 	},
 	
 	// output: {
@@ -33,7 +32,6 @@ export default {
 	// },
 
 	plugins: [
-		del({ targets: 'public/build/*' }),
 		svelte({
 			preprocess: preprocess({
 				scss: {

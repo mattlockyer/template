@@ -1,10 +1,8 @@
 <script>
     import { isMenuOpen, toggleMenu } from './../stores/app.js';
-	import { link } from 'svelte-spa-router'
     import Header from './../components/Header.svelte'
     export let routes
-    console.log(routes)
-    let links = Object.keys(routes).map((k) => ({ path: k, name: routes[k].name }))
+    let links = routes.slice()
     links[2] = { path: '/link/42', name: 'Surprise' }
 </script>
 
@@ -13,7 +11,7 @@
     <menu>
         <Header name="Menu" icon="fa-times" />
         {#each links as {path, name}}
-            <a href={path} on:click={toggleMenu} use:link>{name}</a> 
+            <a href={'/#' + path} on:click={toggleMenu}>{name}</a> 
         {/each}
     </menu>
 </div>
