@@ -1,6 +1,6 @@
 import { writable } from 'svelte/store';
 
-//functions
+//actions
 export const toggleMenu = () => isMenuOpen.update((isMenuOpen) => !isMenuOpen)
 
 //writeables

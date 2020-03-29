@@ -1,21 +1,27 @@
 <script>
 	//components
+	import { onMount } from 'svelte';
 	import Header from './../components/Header.svelte'
 	import Menu from './../components/Menu.svelte'
 	//routes
-	import Router, { link } from 'svelte-spa-router'
+	import Router, { link, location } from 'svelte-spa-router'
 	import Home from './Home.svelte'
 	import Link from './Link.svelte'
 
 	const routes = {
 		'/': Home,
 		'/link': Link,
+		'/link/:id': Link,
 	}
+	
+	location.subscribe((v) => {
+		console.log(v)
+	})
 </script>
 
 <div>
-	<Header />
-	<Menu />
+	<Header name={routes[$location] && routes[$location].name || $location} />
+	<Menu {routes} />
 	<main>
 		<Router {routes}/>
 	</main>

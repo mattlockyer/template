@@ -1,18 +1,20 @@
 <script>
     import { isMenuOpen, toggleMenu } from './../stores/app.js';
 	import { link } from 'svelte-spa-router'
-	import Header from './../components/Header.svelte'
-    
-	let open
-	isMenuOpen.subscribe((value) => open = value)
+    import Header from './../components/Header.svelte'
+    export let routes
+    console.log(routes)
+    let links = Object.keys(routes).map((k) => ({ path: k, name: routes[k].name }))
+    links[2] = { path: '/link/42', name: 'Surprise' }
 </script>
 
-<div class="menu" class:open>
-    <div></div>
+<div class="menu" class:open="{ $isMenuOpen }">
+    <div on:click={toggleMenu}></div>
     <menu>
         <Header name="Menu" icon="fa-times" />
-        <a href="/" on:click={toggleMenu} use:link>Home</a> 
-		<a href="/link" on:click={toggleMenu} use:link>Link</a> 
+        {#each links as {path, name}}
+            <a href={path} on:click={toggleMenu} use:link>{name}</a> 
+        {/each}
     </menu>
 </div>
 
@@ -61,5 +63,4 @@
         transform: translateX(0);
     }
 }
-    
 </style>
